@@ -27,8 +27,31 @@ class Pila:
     def dar_vuelta(self):
         self.p = [self.extraer() for i in range(self.tamano())]
         
+"""
+p = Pila()
+p.incluir(4)
+p.incluir(2)
+p.incluir(1)
+assert p.inspeccionar() == 1
+assert p.p == [4, 2, 1]
+assert p.extraer() == 1
+assert p.inspeccionar() == 2
 
-
+p = Pila()
+p.incluir(4)
+p.incluir(2)
+p.incluir(1)
+assert p.inspeccionar() == 1
+print(p.p)
+assert p.p == [4, 2, 1]
+p.dar_vuelta()
+assert p.p == [1, 2, 4]
+assert p.extraer() == 4
+assert p.inspeccionar() == 2
+p.vaciar_pila()
+assert p.estaVacia() == True
+"""
+#TEST 
 """
 pila1 = Pila()
 pila1.incluir(4)
@@ -73,17 +96,18 @@ revCadena("Mi diario Python")
 4. Usando pilas haga una función que diga si una expresión
 (un string) tiene la misma cantidad de 0's que de 1's
 """
-"""
+
 def contar0y1(palabra:str)->bool:
     pila = Pila()
- 
-    for i in len(palabra):
+    
+    
+    for i in palabra:
         pila.incluir(i)
     
-    for item in pila.tamano():
-        pass
-
-
+    cero = pila.p.count("0")
+    uno = pila.p.count("1")
+    return cero == uno
+    
 
 assert contar0y1("ajsndakjsdn0asd1") == True
 assert contar0y1("ajsndakjsdn0asd11") == False
@@ -92,7 +116,7 @@ assert contar0y1("ajsndakjsdn0asd11") == False
 
 
 
-
+"""
 6. Usando pilas escribir una función en python para encontrar la validez de una cadena de paréntesis, '(', ')', '{', '}', '['']. 
 Los paréntesis deben aparecer en el orden correcto, por ejemplo "()" y "()[]{}" son válidos, pero "[)", "({[)]" y "{{{" son inválidos.
 """
