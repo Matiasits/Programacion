@@ -99,7 +99,7 @@ revCadena("Mi diario Python")
 
 def contar0y1(palabra:str)->bool:
     pila = Pila()
-    
+    pila.vaciar_pila()
     
     for i in palabra:
         pila.incluir(i)
@@ -114,6 +114,35 @@ assert contar0y1("ajsndakjsdn0asd11") == False
 
 
 
+
+"""
+5. Usando pilas haga una función que diga si una expresión (un string) está balanceado de paréntesis.
+Para resolverlo leer:
+https://runestone.academy/ns/books/published/pythoned/BasicDS/ParentesisSimplesBalanceados.html
+def balanceada(expresion:string)->bool:
+
+assert balanceada(“()()()”) == True
+assert balanceada(“()()())”) == False
+"""
+def balanceada(expresion:str)->bool:
+    pila = Pila()
+    balance = True
+
+    for i in expresion:
+        if i == "(":
+            pila.incluir(i)
+        elif pila.esVacia() == True:
+            balance = False
+        else:
+            pila.vaciar_pila()
+
+    return balance == pila.esVacia()
+
+
+
+
+assert balanceada("()()()") == True
+assert balanceada("()()())") == False
 
 
 """
