@@ -27,15 +27,6 @@ class Pila:
     def dar_vuelta(self):
         self.p = [self.extraer() for i in range(self.tamano())]
         
-"""
-p = Pila()
-p.incluir(4)
-p.incluir(2)
-p.incluir(1)
-assert p.inspeccionar() == 1
-assert p.p == [4, 2, 1]
-assert p.extraer() == 1
-assert p.inspeccionar() == 2
 
 p = Pila()
 p.incluir(4)
@@ -49,7 +40,8 @@ assert p.p == [1, 2, 4]
 assert p.extraer() == 4
 assert p.inspeccionar() == 2
 p.vaciar_pila()
-assert p.estaVacia() == True
+assert p.esVacia() == True
+print(p.dar_vuelta())
 """
 #TEST 
 """
@@ -66,7 +58,7 @@ assert pila1.extraer() == 4
 assert pila1.inspeccionar() == 2
 pila1.vaciar_pila()
 assert pila1.esVacia() == True
-"""
+
 """
 2. Agregar a la clase pila los siguientes métodos (usando preferentemente los métodos ya utilizados)
     a. Dar vuelta pila (al finalizar el método la misma pila tiene que estar dada vuelta)
@@ -139,8 +131,6 @@ def balanceada(expresion:str)->bool:
     return balance == pila.esVacia()
 
 
-
-
 assert balanceada("()()()") == True
 assert balanceada("()()())") == False
 
@@ -149,3 +139,23 @@ assert balanceada("()()())") == False
 6. Usando pilas escribir una función en python para encontrar la validez de una cadena de paréntesis, '(', ')', '{', '}', '['']. 
 Los paréntesis deben aparecer en el orden correcto, por ejemplo "()" y "()[]{}" son válidos, pero "[)", "({[)]" y "{{{" son inválidos.
 """
+
+"""
+7. Usando pilas defina una función que diga si una palabra es capicua.
+"""
+
+
+def capicua(palabra:str)->bool:
+    pila = Pila()
+    pila.vaciar_pila()
+    lst = []
+    
+    for i in palabra:
+        pila.incluir(i.lower())
+        lst.append(i.lower())
+    pila.dar_vuelta()
+    return pila.p == lst    
+
+capicua("Ala")
+ 
+assert capicua("Ala") == True
