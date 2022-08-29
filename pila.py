@@ -80,9 +80,9 @@ def revCadena(cadena:str) -> str:
     lst1 = [pila.extraer() for i in range(pila.tamano())]
 
     x = " ".join(lst1)
-    print(x)
-
-revCadena("Mi diario Python")
+    return x
+    
+assert revCadena("hola mundo") == "mundo hola"
 
 """
 4. Usando pilas haga una función que diga si una expresión
