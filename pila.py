@@ -159,3 +159,51 @@ def capicua(palabra:str)->bool:
 capicua("Ala")
  
 assert capicua("Ala") == True
+
+"""
+ Implementar la clase pila nuevamente de manera que se comporte de la misma manera , utilizando listas, 
+ pero donde el tope no esté en la punta de la lista sino al principio de la lista. Es decir
+
+class Pila2:
+ 	def __init__(self):
+     	self.items = []
+
+ 	def estaVacia(self):
+     	return self.items == []
+
+ 	def incluir(self, item):
+	## Completar aca ##
+
+ 	def extraer(self):
+	## Completar aca ##
+
+ 	def inspeccionar(self):
+     	return self.items[0]
+
+ 	def tamano(self):
+     	return len(self.items)
+
+Pista: Fíjense en el código que estoy escribiendo acá que solamente deberían escribir los métodos incluir y 
+extraer para que lo hagan al principio y no al final de la lista. 
+Para un repaso de las funciones de listas que pueden ayudar revise esta pagina.
+http://interactivepython.org/runestone/static/pythoned/Introduction/ComencemosConLosDatos.html#tipos-de-datos-de-colecciones-incorporados
+"""
+
+class Pila2:
+    def __init__(self):
+        self.items = []
+
+    def estaVacia(self):
+        return self.items == []
+
+    def incluir(self, item):
+        self.items.insert(0,item)
+    
+    def extraer(self):
+        self.items.pop(0)
+
+    def inspeccionar(self):
+        return self.items[0]
+
+    def tamano(self):
+        return len(self.items)
