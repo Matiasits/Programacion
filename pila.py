@@ -143,22 +143,7 @@ assert balanceada("()()())") == False
 6. Usando pilas escribir una función en python para encontrar la validez de una cadena de paréntesis, '(', ')', '{', '}', '['']. 
 Los paréntesis deben aparecer en el orden correcto, por ejemplo "()" y "()[]{}" son válidos, pero "[)", "({[)]" y "{{{" son inválidos.
 """
-def  balanceada_general(expresion:str)->bool:
-    expPila = Pila()
-    balance = True
-    validos = {"(":")","[":"]","{":"}"}
-    
-    for i in expresion:
-        if i in validos:
-            expPila.incluir(i)
-        
-        elif expPila.extraer() != validos.get(i):
-            balance = False
-        else:
-            return balance
-        
 
-assert balanceada_general("[](()[)]") == False
 """
 7. Usando pilas defina una función que diga si una palabra es capicua.
 """

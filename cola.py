@@ -21,15 +21,15 @@ class Cola:
         return ("{}".format(self.elementos))
 
     def concatenar(self, cola2):
+        for i in range(cola2.tamanio()):
+            self.agregar(cola2.sacar())
+
+    def concatenar2(self, cola2):
         # este metodo concatena dos colas, pone la cola 2 al final de la cola 1
         # usar metodos de cola
         # saco cada elemento de cola 2 y lo pongo en cola 1 (self)
         # al final del metodo la cola 2 debe tener los mismos elmentos que al principio
         # (es decir que no borra la cola 2)
-        for i in range(cola2.tamanio()):
-            self.agregar(cola2.sacar())
-
-    def concatenar2(self, cola2):
         c2 = [self.agregar(i) for i in range(cola2.tamanio())]
         self.concatenar(c2)
     
@@ -43,7 +43,16 @@ class Cola:
     def dar_vuelta(self):
         self.elementos = [self.sacar() for i in range(self.tamanio())]
         
-        
+    #Ejercicio 6
+    """ Escriba un metodo de Cola que dada una cola C1 reciba una cola C2  de 
+    números enteros y devuelva una nueva Cola con los elementos concatenados en el 
+    orden C1 y C2. Es de destacar que las Colas recibidas no deben sufrir ningún 
+    tipo de cambio o alteración.(en principio utilizar los métodos de cola para la 
+    tarea)"""
+    def concatenar_orden(self,cola2):
+        for i in range(cola2.tamanio()):
+            self.agregar(i)
+
 
 #Ejercicicio 3: Implementar en un archivo de python la clase cola vista en clase
 
@@ -57,6 +66,7 @@ p.agregar(True) # [4,'perro',true]
 #print(p.tamanio()) # 3
 #print(p.es_vacia()) #False
 p.agregar(8.4) # [4,'perro',true,8.4]
+
 #print(p.sacar()) # imprime el 4 y lo saca
 #print(p.sacar()) # impreme perro y lo saca
 #print(p.tamanio()) # 2
@@ -89,12 +99,14 @@ def concatenar(self,cola2): # cortar pegar
 # Escriba una función que reciba una Cola C1 y mueva sus elementos a una nueva Cola c2, manteniendo el orden de salida de los elementos.
 # Al finalizar la Cola C1 no debe contener elementos.
 
-def trasladar(c:Cola)->Cola:
-    C2 = Cola()
-    C2.vaciar_cola()
+def trasladar(c1:Cola)->Cola:
+    c2 = Cola()
+    c2.vaciar_cola()
+    
+    for i in range(c1.tamanio()):
+            c2.agregar(c1.sacar())
 
-    for i in range(c.tamanio()):
-            C2.agregar(c.sacar())
+c1 = Cola()
 
-trasladar(p)
-assert p.es_vacia == True
+trasladar(c1)
+assert c1.es_vacia() == True
