@@ -120,6 +120,7 @@ def balanceada(expresion:string)->bool:
 assert balanceada(“()()()”) == True
 assert balanceada(“()()())”) == False
 """
+
 def balanceada(expresion:str)->bool:
     pila = Pila()
     balance = True
@@ -138,7 +139,7 @@ def balanceada(expresion:str)->bool:
 assert balanceada("()()()") == True
 assert balanceada("()()())") == False
 
-
+    
 """
 6. Usando pilas escribir una función en python para encontrar la validez de una cadena de paréntesis, '(', ')', '{', '}', '['']. 
 Los paréntesis deben aparecer en el orden correcto, por ejemplo "()" y "()[]{}" son válidos, pero "[)", "({[)]" y "{{{" son inválidos.
@@ -149,13 +150,9 @@ def  balanceada_general(expresion:str)->bool:
     validos = {"(":")","[":"]","{":"}"}
     
     for i in expresion:
-        if i in validos:
+        if i in validos: #si i coincide con una key, devuelve True
             expPila.incluir(i)
-        
-        elif expPila.extraer() != validos.get(i):
-            balance = False
-        else:
-            return balance
+
         
 
 assert balanceada_general("[](()[)]") == False
