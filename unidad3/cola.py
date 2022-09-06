@@ -1,6 +1,3 @@
-from lzma import MODE_NORMAL
-
-
 class Cola:
     elementos = []
     
