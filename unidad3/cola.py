@@ -1,3 +1,6 @@
+from lzma import MODE_NORMAL
+
+
 class Cola:
     elementos = []
     
@@ -23,15 +26,6 @@ class Cola:
     def concatenar(self, cola2):
         for i in range(cola2.tamanio()):
             self.agregar(cola2.sacar())
-
-    def concatenar2(self, cola2):
-        # este metodo concatena dos colas, pone la cola 2 al final de la cola 1
-        # usar metodos de cola
-        # saco cada elemento de cola 2 y lo pongo en cola 1 (self)
-        # al final del metodo la cola 2 debe tener los mismos elmentos que al principio
-        # (es decir que no borra la cola 2)
-        c2 = [self.agregar(i) for i in range(cola2.tamanio())]
-        self.concatenar(c2)
     
     def imprimir_cola(self):
         for i in self.elementos():
@@ -50,9 +44,35 @@ class Cola:
     tipo de cambio o alteración.(en principio utilizar los métodos de cola para la 
     tarea)"""
     def concatenar_orden(self,cola2):
+        
         for i in range(cola2.tamanio()):
-            self.agregar(i)
+            elemento = cola2.sacar()
+            self.agregar(elemento)
+            cola2.agregar(elemento)
 
+        """Escriba una rutina que reciba dos Colas C1 y C2 de números enteros y 
+        proceda a intercambiar sus elementos, manteniendo el orden de salida de los mismos.
+        Al finalizar la rutina, la Cola C1 tendrá los elementos de la 
+        Cola C2 y ésta a su vez tendrá los elementos de la Cola C1."""
+
+    def intercambiar(self,c2):
+        if c2.tamanio() > self.tamanio():
+            mayor, menor = c2.tamanio(), self.tamanio() 
+        else:
+            mayor, menor = self.tamanio(), c2.tamanio()
+        
+        for i in range(mayor):
+            c2.agregar(self.sacar())
+            self.agregar(c2.sacar())
+        for i in range(mayor-menor):
+            c2.agregar(self.sacar())
+            self.agregar(c2.sacar())
+        
+
+
+#c1.intercambiar(c2) 
+# c1 = [1,4,8] y c2 = [4,2,7]
+# c2 == [1,4,8] y c1 == [4,2,7]
 
 #Ejercicicio 3: Implementar en un archivo de python la clase cola vista en clase
 
@@ -67,26 +87,26 @@ p.agregar(True) # [4,'perro',true]
 #print(p.es_vacia()) #False
 p.agregar(8.4) # [4,'perro',true,8.4]
 
+c2 = Cola()
+print(c2.es_vacia())
+c2.vaciar_cola()
+
+c2.agregar(1)
+c2.agregar(2)
+c2.agregar(3)
+c2.agregar(4)
+c2.agregar(5)
+
+print(f"cola inicial {p.elementos}")
+print(f"cola aniadida {c2.elementos}\n")
+
+p.intercambiar(c2)
+print(f"cola inicial {p.elementos}")
+print(f"cola aniadida {c2.elementos}")
 #print(p.sacar()) # imprime el 4 y lo saca
 #print(p.sacar()) # impreme perro y lo saca
 #print(p.tamanio()) # 2
 #print(p.dar_vuelta())
-"""
-def concatenar(self,cola2): # cortar pegar
-        # este metodo concatena dos colas, pone la cola 2 al final de la cola 1
-        # usar metodos de cola
-        # saco cada elemento de cola 2 y lo pongo en cola 1 (self)
-        while not cola2.es_vacia(): #
-            aux = cola2.sacar()
-            self.agregar(aux)
-    
-    def concatenar2(self,cola2): # copiar pegar
-        # este metodo concatena dos colas, pone la cola 2 al final de la cola 1
-        # usar metodos de cola
-        # saco cada elemento de cola 2 y lo pongo en cola 1 (self)
-        # al final del metodo la cola 2 debe tener los mismos elmentos que al principio
-        # (es decir que no borra la cola 2)
-"""
 
 # Ejercicio 4: 
 # Agregar a la clase cola los siguientes métodos (usando preferentemente los métodos ya utilizados)
@@ -96,7 +116,8 @@ def concatenar(self,cola2): # cortar pegar
 
 
 # Ejercicio 5:
-# Escriba una función que reciba una Cola C1 y mueva sus elementos a una nueva Cola c2, manteniendo el orden de salida de los elementos.
+# Escriba una función que reciba una Cola C1 y mueva sus elementos a una nueva Cola c2, 
+# manteniendo el orden de salida de los elementos.
 # Al finalizar la Cola C1 no debe contener elementos.
 
 def trasladar(c1:Cola)->Cola:
@@ -110,3 +131,4 @@ c1 = Cola()
 
 trasladar(c1)
 assert c1.es_vacia() == True
+

@@ -161,7 +161,7 @@ def capicua(palabra:str)->bool:
     return pila.p == lst    
 
 capicua("Ala")
- 
+
 assert capicua("Ala") == True
 
 
