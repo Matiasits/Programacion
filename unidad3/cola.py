@@ -125,7 +125,9 @@ def trasladar(c1:Cola)->Cola:
             c2.agregar(c1.sacar())
 
 c1 = Cola()
+c1.agregar(2)
+c1.agregar(3)
+c1.agregar(4)
 
 trasladar(c1)
 assert c1.es_vacia() == True
-
