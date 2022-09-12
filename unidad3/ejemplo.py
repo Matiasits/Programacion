@@ -1,18 +1,37 @@
 """
-def concatenar(self,cola2): # cortar pegar
-        # este metodo concatena dos colas, pone la cola 2 al final de la cola 1
-        # usar metodos de cola
-        # saco cada elemento de cola 2 y lo pongo en cola 1 (self)
-        while not cola2.es_vacia(): #
-            aux = cola2.sacar()
-            self.agregar(aux)
+from typing import *
+Matrix = List[List[int]]
+
+def filas(a):
+    return len(a)
+
+def columnas(a):
+    return len(a[0])
+
+def dimension(a):
+    return (filas(a),columnas(a))
+
+def contarRepes(m,valor):
+    contador = 0 
+    dim = dimension(m)
     
-    def concatenar2(self,cola2): # copiar pegar
-        # este metodo concatena dos colas, pone la cola 2 al final de la cola 1
-        # usar metodos de cola
-        # saco cada elemento de cola 2 y lo pongo en cola 1 (self)
-        # al final del metodo la cola 2 debe tener los mismos elmentos que al principio
-        # (es decir que no borra la cola 2)
+    for i in range(dim[0]):
+        for j in range(dim[1]):
+            if m[i][j] == valor:
+                contador = contador + 1
+    return contador
+
+c = [[1,3,5],[4,3,5],[2,1,2]]
+
+assert contarRepes(c,1) == 2
+
+def multiplicacion_escalar(M:Matrix, a:int) -> Matrix:
+    dim = dimension(M)
+    
+    for i in range(dim[0]):
+        for j in range(dim[1]):
+            M[i][j] = M[i][j] * a
+
 """
 from pila import Pila
 
